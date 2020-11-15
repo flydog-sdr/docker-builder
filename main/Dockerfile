@@ -14,4 +14,10 @@ RUN cd /root/Beagle_SDR_GPS \
   && make \
   && make install
 
-CMD ["/usr/local/bin/kiwid", "-debian", "10", "-use_spidev", "1", "-bg", "-raspsdr"]
+RUN curl -o /tmp/wiringpi.deb https://project-downloads.drogon.net/wiringpi-latest.deb \
+  && dpkg -i /tmp/wiringpi.deb \
+  && rm -rf /tmp/wiringpi.deb
+
+ADD entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT ["sh", "-c", "/entrypoint.sh"]
