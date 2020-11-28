@@ -27,11 +27,12 @@ RUN sed -e "s/security.debian.org/mirrors.bfsu.edu.cn/g" \
     && curl -o /tmp/wiringpi.deb https://project-downloads.drogon.net/wiringpi-latest.deb \
     && dpkg -i /tmp/wiringpi.deb \
     && git clone -b ${BRANCH} https://github.com/flydog-sdr/FlyDog_SDR_GPS /root/Beagle_SDR_GPS \
-    && rm -rf /root/Beagle_SDR_GPS/.git* /tmp/wiringpi.deb \
     && cd /root/Beagle_SDR_GPS \
     && make \
     && make install \
+    && rm -rf /root/Beagle_SDR_GPS/.git* /tmp/wiringpi.deb /var/lib/apt/lists/* \
     && echo 1 > /root/kiwi.config/_UPDATE \
-    && chmod +x /opt/entrypoint.sh
+    && chmod +x /opt/entrypoint.sh \
+
 
 ENTRYPOINT ["sh", "-c", "/opt/entrypoint.sh"]
