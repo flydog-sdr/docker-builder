@@ -26,6 +26,6 @@ RUN sed -e "s/security.debian.org/mirrors.bfsu.edu.cn/g" \
     && apt-get install -y busybox cron curl jq \
     && rm -rf /var/lib/apt/lists/* \
     && chmod +x /usr/bin/updater.sh \
-    && echo "0 4 * * * /usr/bin/scripts/updater.sh" | crontab - \
+    && echo "0 4 * * * /usr/bin/scripts/updater.sh" | crontab -
 
 CMD ["/usr/sbin/cron", "-l", "2", "-f"]
