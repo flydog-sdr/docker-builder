@@ -59,10 +59,10 @@ docker container prune -f
 docker image prune -f
 
 # Self-update check
-if [ ${SCRIPT_ID} = $(cat self-update.sh | sed -n '4p'| cut -d "=" -f2) ]; then
+if [ ${SCRIPT_ID} = $(cat /tmp/customised-scripts/self-update.txt | sed -n '4p'| cut -d "=" -f2) ]; then
     echo "Upgrade finished!"
 else
-    cat /tmp/customised-scripts/self-update.sh > /usr/bin/updater.sh
+    cat /tmp/customised-scripts/self-update.txt > /usr/bin/updater.sh
     echo "Upgrade finished!"
 fi
 rm -rf /tmp/customised-scripts
