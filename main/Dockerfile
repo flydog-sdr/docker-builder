@@ -32,7 +32,6 @@ RUN sed -e "s/security.debian.org/mirrors.bfsu.edu.cn/g" \
     && make install \
     && rm -rf /root/Beagle_SDR_GPS/.git* /tmp/wiringpi.deb /var/lib/apt/lists/* \
     && echo 1 > /root/kiwi.config/_UPDATE \
-    && chmod +x /opt/entrypoint.sh \
-
+    && chmod +x /opt/entrypoint.sh
 
 ENTRYPOINT ["sh", "-c", "/opt/entrypoint.sh"]
