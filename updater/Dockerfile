@@ -24,7 +24,7 @@ RUN sed -e "s/security.debian.org/mirrors.bfsu.edu.cn/g" \
         -i /etc/apt/sources.list \
     && apt-get update \
     && apt-get install -y busybox cron curl jq \
-	&& rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
     && chmod +x /usr/bin/updater.sh \
     && echo "0 4 * * * /usr/bin/scripts/updater.sh" | crontab - \
 
