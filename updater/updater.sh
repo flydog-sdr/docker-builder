@@ -26,8 +26,6 @@ APP_NAME="flydog-sdr"
 CURL_ARGS="-L -s --connect-timeout 15 --insecure --retry 10"
 CURRENT_VER="$(curl ${CURL_ARGS} http://${APP_NAME}:8073/VER | jq --raw-output '(.maj|tostring) + (.min|tostring)')"
 REMOTE_VER="$(curl ${CURL_ARGS} --resolve raw.githubusercontent.com:443:151.101.88.133 https://raw.githubusercontent.com/flydog-sdr/FlyDog_SDR_GPS/master/Makefile | head -2 | cut -d " " -f3 | tr -d "\n")"
-IMAGE_TAG="registry.cn-shanghai.aliyuncs.com/flydog-sdr/flydog-sdr:latest"
-LOCAL_IMAGE_ID=$(docker inspect -f {{".Id"}} ${IMAGE_TAG})
 SCRIPTS_FETCH_URL="https://codeload.github.com/flydog-sdr/customised-scripts/zip/master"
 
 # Version comparison
