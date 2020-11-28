@@ -17,7 +17,6 @@ LABEL maintainer "Yuki Kikuchi <bclswl0827@yahoo.co.jp>"
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Tokyo
 
-ADD entrypoint.sh /opt/entrypoint.sh
 ADD updater.sh /usr/bin/updater.sh
 
 RUN sed -e "s/security.debian.org/mirrors.bfsu.edu.cn/g" \
@@ -25,7 +24,8 @@ RUN sed -e "s/security.debian.org/mirrors.bfsu.edu.cn/g" \
         -i /etc/apt/sources.list \
     && apt-get update \
     && apt-get install -y busybox cron curl jq \
-    && chmod +x /opt/entrypoint.sh /usr/bin/updater.sh \
-    && echo "0 4 * * * /usr/bin/scripts/updater.sh" | crontab -
+	&& rm -rf /var/lib/apt/lists/*
+    && chmod +x /usr/bin/updater.sh \
+    && echo "0 4 * * * /usr/bin/scripts/updater.sh" | crontab - \
 
-ENTRYPOINT ["sh", "-c", "/opt/entrypoint.sh"]
+CMD ["/usr/sbin/cron", "-l", "2", "-f"]

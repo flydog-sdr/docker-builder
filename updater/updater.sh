@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # SCRIPT_ID variable for self-update
-SCRIPT_ID=3c174aaa-57e5-4cdb-88f1-0e6f19b38256
+SCRIPT_ID=3c174aaa
 
 # check if Auto-update is enabled
 if [ $(cat /etc/kiwi.config/_UPDATE) -eq 1 ]; then
