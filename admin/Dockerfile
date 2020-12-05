@@ -1,16 +1,16 @@
 # pi@raspberrypi:~ $ docker network create -d bridge flydog-sdr
 # pi@raspberrypi:~ $ git clone https://github.com/flydog-sdr/docker-builder docker-builder
-# pi@raspberrypi:~ $ cd docker-builder/updater
-# pi@raspberrypi:~/docker-builder/updater $ docker build -t updater:latest .
-# pi@raspberrypi:~/docker-builder/updater $ docker run -d \
-#   --name updater \
+# pi@raspberrypi:~ $ cd docker-builder/admin
+# pi@raspberrypi:~/docker-builder/admin $ docker build -t admin:latest .
+# pi@raspberrypi:~/docker-builder/admin $ docker run -d \
+#   --name admin \
 #   --network flydog-sdr \
 #   --publish 3708:3708 \
 #   --restart always \
 #   --volume /usr/bin/docker:/usr/bin/docker \
 #   --volume /var/run/docker.sock:/var/run/docker.sock \
 #   --volume kiwi.config:/etc/kiwi.config \
-#   updater:latest
+#   admin:latest
 
 FROM debian:buster-slim
 LABEL maintainer "Yuki Kikuchi <bclswl0827@yahoo.co.jp>"
