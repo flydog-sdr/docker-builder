@@ -22,7 +22,6 @@ else
         exit 255
     fi
 fi
-echo "0x54" > /sys/class/i2c-adapter/i2c-1/delete_device
 
 # Start fan
 /usr/bin/gpio mode 26 pwm
