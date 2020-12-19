@@ -15,7 +15,8 @@
 FROM debian:buster-slim
 LABEL maintainer "Yuki Kikuchi <bclswl0827@yahoo.co.jp>"
 ARG DEBIAN_FRONTEND=noninteractive
-ENV BRANCH=master
+ENV BRANCH=master \
+    REPO=FlyDog_SDR_GPS
 
 ADD entrypoint.sh /opt/entrypoint.sh
 
@@ -26,11 +27,11 @@ RUN sed -e "s/security.debian.org/mirrors.bfsu.edu.cn/g" \
     && apt-get install -y curl git iptables make rsync xxd \
     && curl -o /tmp/wiringpi.deb https://project-downloads.drogon.net/wiringpi-latest.deb \
     && dpkg -i /tmp/wiringpi.deb \
-    && git clone -b ${BRANCH} https://github.com/flydog-sdr/FlyDog_SDR_GPS /root/Beagle_SDR_GPS \
-    && cd /root/Beagle_SDR_GPS \
+    && git clone -b ${BRANCH} https://github.com/flydog-sdr/${REPO} /root/${REPO} \
+    && cd /root/${REPO} \
     && make \
     && make install \
-    && rm -rf /root/Beagle_SDR_GPS/.git* /tmp/wiringpi.deb /var/lib/apt/lists/* \
+    && rm -rf /root/${REPO}/.git* /tmp/wiringpi.deb /var/lib/apt/lists/* \
     && echo 1 > /root/kiwi.config/_UPDATE \
     && chmod +x /opt/entrypoint.sh
 
