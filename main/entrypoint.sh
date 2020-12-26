@@ -31,4 +31,4 @@ fi
 echo 1000000 > /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq
 
 # Start main process
-/usr/local/bin/kiwid -debian 10 -use_spidev 1 -bg -flydogsdr
+/usr/local/bin/kiwid -debian 10 -use_spidev 1 -bg -fdsdr
