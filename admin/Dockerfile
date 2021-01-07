@@ -13,6 +13,6 @@ RUN sed -e "s/security.debian.org/mirrors.bfsu.edu.cn/g" \
     && echo '*/1  * * * * echo "root:$(jq --raw-output ".admin_password" /etc/kiwi.config/admin.json)" | chpasswd' >> /tmp/crontab \
     && echo "0 4 * * * /usr/bin/updater.sh" >> /tmp/crontab \
     && crontab /tmp/crontab \
-    && rm -rf /tmp/crontab /var/lib/apt/lists/* \
+    && rm -rf /tmp/crontab /var/lib/apt/lists/*
 
 CMD ["/usr/sbin/cron", "-l", "2", "-f"]
