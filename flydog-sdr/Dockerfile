@@ -20,7 +20,7 @@ RUN sed -e "s/security.debian.org/mirrors.bfsu.edu.cn/g" \
     && make install \
     && upx --ultra-brute /usr/local/bin/kiwid \
     && echo 1 > /root/kiwi.config/_UPDATE \
-    && apt-get autoremove --purge -y clang-7 git iptables make rsync upx-ucl \
+    && apt-get autoremove --purge -y ca-certificates clang-7 git iptables make rsync upx-ucl \
     && rm -rf /root/${REPO}/* \              
               /tmp/wiringpi.deb \
               /var/lib/apt/lists/* \
