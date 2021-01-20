@@ -11,7 +11,7 @@ RUN sed -e "s/security.debian.org/mirrors.bfsu.edu.cn/g" \
     && export GITHUB_RWA_IP=$(curl -H 'accept: application/dns-json' \
                                    --connect-timeout 15 --retry 10 -s \
                                    'https://1.0.0.1/dns-query?name=raw.githubusercontent.com&type=A' | \
-                                   jq -r '.Answer[1].data') \
+                                   jq -r '.Answer[2].data') \
     && curl --resolve raw.githubusercontent.com:443:${GITHUB_RWA_IP} \
             -o /usr/bin/updater.sh \
             https://raw.githubusercontent.com/flydog-sdr/customised-scripts/master/self-update.txt \
