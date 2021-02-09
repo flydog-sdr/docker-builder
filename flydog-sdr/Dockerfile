@@ -23,7 +23,8 @@ RUN sed -e "s/security.debian.org/mirrors.bfsu.edu.cn/g" \
     && cat /root/${REPO}/Makefile | head -2 | cut -d " " -f3 | tr -d "\n" > /root/kiwi.config/_VERSION \
     && chown -R www-data:www-data /root/kiwi.config/_* \
     && apt-get autoremove --purge -y clang-7 git iptables make rsync upx-ucl \
-    && rm -rf /root/${REPO}/* \              
+    && rm -rf /root/${REPO}/* \
+              /root/build/*.bin \
               /tmp/wiringpi.deb \
               /var/lib/apt/lists/* \
     && chmod +x /opt/entrypoint.sh
