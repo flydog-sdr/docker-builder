@@ -18,7 +18,7 @@ RUN sed -e "s/security.debian.org/mirrors.bfsu.edu.cn/g" \
     && cd /root/${REPO} \
     && make \
     && make install \
-    && upx --ultra-brute /usr/local/bin/kiwid \
+    && upx --lzma /usr/local/bin/kiwid \
     && echo 1 > /root/kiwi.config/_UPDATE \
     && cat /root/${REPO}/Makefile | head -2 | cut -d " " -f3 | tr -d "\n" > /root/kiwi.config/_VERSION \
     && chown -R www-data:www-data /root/kiwi.config/_* \
