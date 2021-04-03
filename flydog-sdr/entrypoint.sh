@@ -1,5 +1,5 @@
 #!/bin/bash
-# Bind IP Address of p.sdrotg.com
+# Bind IP address of p.sdrotg.com
 echo "1.0.0.1 p.sdrotg.com" >> /etc/hosts
 
 # If /dev/gpiomem doesn't exist, create one
@@ -17,4 +17,4 @@ fi
 /usr/bin/gpio pwm 26 1024
 
 # Main process
-/usr/local/bin/kiwid -debian 10 -use_spidev 1 -bg -fdsdr
+/usr/local/bin/kiwid -debian 10 -use_spidev 1 -bg
