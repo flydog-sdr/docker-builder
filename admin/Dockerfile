@@ -3,6 +3,8 @@ LABEL maintainer "Yuki Kikuchi <bclswl0827@yahoo.co.jp>"
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Tokyo
 
+ADD entrypoint.sh /opt/entrypoint.sh
+
 RUN sed -e "s/security.debian.org/mirrors.bfsu.edu.cn/g" \
         -e "s/deb.debian.org/mirrors.bfsu.edu.cn/g" \
         -i /etc/apt/sources.list \
@@ -20,4 +22,4 @@ RUN sed -e "s/security.debian.org/mirrors.bfsu.edu.cn/g" \
     && crontab /tmp/crontab \
     && rm -rf /tmp/crontab /var/lib/apt/lists/*
 
-CMD ["/usr/sbin/cron", "-l", "2", "-f"]
+ENTRYPOINT ["sh", "-c", "/opt/entrypoint.sh"]
