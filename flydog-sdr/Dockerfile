@@ -29,4 +29,4 @@ RUN sed -e "s/security.debian.org/mirrors.bfsu.edu.cn/g" \
               /var/lib/apt/lists/* \
     && chmod +x /opt/entrypoint.sh
 
-ENTRYPOINT ["sh", "-c", "/opt/entrypoint.sh"]
+ENTRYPOINT ["bash", "-c", "/opt/entrypoint.sh"]

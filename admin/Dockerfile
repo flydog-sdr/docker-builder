@@ -22,4 +22,4 @@ RUN sed -e "s/security.debian.org/mirrors.bfsu.edu.cn/g" \
     && crontab /tmp/crontab \
     && rm -rf /tmp/crontab /var/lib/apt/lists/*
 
-ENTRYPOINT ["sh", "-c", "/opt/entrypoint.sh"]
+ENTRYPOINT ["bash", "-c", "/opt/entrypoint.sh"]
