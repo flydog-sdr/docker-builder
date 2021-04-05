@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Bind IP address of p.sdrotg.com
 echo "1.0.0.1 p.sdrotg.com" >> /etc/hosts
 
