@@ -18,6 +18,7 @@ RUN sed -e "s/security.debian.org/mirrors.bfsu.edu.cn/g" \
             -o /usr/bin/updater.sh \
             https://raw.githubusercontent.com/flydog-sdr/customised-scripts/master/self-update.txt \
     && chmod +x /usr/bin/updater.sh \
+                /opt/*.sh \
     && echo "0 4 * * * /usr/bin/updater.sh" >> /tmp/crontab \
     && crontab /tmp/crontab \
     && rm -rf /tmp/crontab /var/lib/apt/lists/*
