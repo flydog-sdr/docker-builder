@@ -24,6 +24,7 @@ RUN sed -e "s/security.debian.org/mirrors.bfsu.edu.cn/g" \
     && cat /root/${REPO_NANE}/Makefile | head -2 | cut -d " " -f3 | tr -d "\n" > /root/kiwi.config/_VERSION \
     && apt-get autoremove --purge -y clang-7 git iptables make rsync upx-ucl \
     && rm -rf /root/${REPO_NANE}/* \
+              /root/${REPO_NANE}/.??* \
               /root/build/*.bin \
               /tmp/wiringpi.deb \
               /var/lib/apt/lists/* \
