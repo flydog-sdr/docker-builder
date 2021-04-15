@@ -1,6 +1,4 @@
 #!/bin/bash
-# Bind IP address of p.sdrotg.com
-echo "1.1.1.1 p.sdrotg.com" >> /etc/hosts
 
 # If /dev/gpiomem doesn't exist, create one
 if [[ ! -f /sys/bus/i2c/devices/1-0054/eeprom ]];then
