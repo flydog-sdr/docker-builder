@@ -1,7 +1,7 @@
 FROM debian:buster-slim
 LABEL maintainer "Yuki Kikuchi <bclswl0827@yahoo.co.jp>"
-ARG DEBIAN_FRONTEND=noninteractive
-ENV TZ=Asia/Tokyo
+ENV DEBIAN_FRONTEND=noninteractive \
+    TZ=Asia/Tokyo
 
 ADD entrypoint.sh /opt/entrypoint.sh
 
