@@ -12,7 +12,7 @@ RUN sed -e "s/security.debian.org/mirrors.bfsu.edu.cn/g" \
         -e "s/deb.debian.org/mirrors.bfsu.edu.cn/g" \
         -i /etc/apt/sources.list \
     && apt-get update \
-    && apt-get install --no-install-recommends -y ca-certificates curl file git iptables make rsync upx-ucl \
+    && apt-get install --no-install-recommends -y ca-certificates curl file git make rsync upx-ucl \
     && git clone --branch ${GIT_BRANCH} --depth 1 --single-branch https://${GIT_HOST}/${GIT_USER}/${REPO_NANE} /root/${REPO_NANE} \
     && cd /root/${REPO_NANE}; make; make install \
     && upx --lzma /usr/local/bin/kiwid \
