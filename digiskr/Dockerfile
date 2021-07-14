@@ -1,4 +1,5 @@
-FROM debian:buster-slim AS builder
+#FROM debian:buster-slim
+FROM registry.cn-shanghai.aliyuncs.com/flydog-sdr/debian:latest AS builder
 LABEL maintainer "Yuki Kikuchi <bclswl0827@yahoo.co.jp>"
 ENV APT_MIRROR="mirrors.bfsu.edu.cn" \
     DEBIAN_FRONTEND=noninteractive
@@ -16,7 +17,8 @@ RUN if [ "x${APT_MIRROR}" != "x" ]; then \
     && upx --lzma /tmp/wsjtx/* \
     && apt-get autoremove --purge -y upx-ucl wsjtx
 
-FROM debian:buster-slim
+#FROM debian:buster-slim
+FROM registry.cn-shanghai.aliyuncs.com/flydog-sdr/debian:latest
 ENV APT_MIRROR="mirrors.bfsu.edu.cn" \
     DEBIAN_FRONTEND=noninteractive
 
