@@ -25,7 +25,6 @@ RUN if [ "x${APT_MIRROR}" != "x" ]; then \
     && rm -rf /root/${REPO_NANE}/* \
               /root/${REPO_NANE}/.??* \
               /root/build/*.bin \
-              /var/lib/apt/lists/* \
-    && ldconfig
+              /var/lib/apt/lists/*
 
 ENTRYPOINT ["bash", "-c", "/opt/entrypoint.sh"]
