@@ -1,4 +1,5 @@
-FROM debian:buster-slim
+#FROM debian:buster-slim
+FROM registry.cn-shanghai.aliyuncs.com/flydog-sdr/debian:latest
 LABEL maintainer "Yuki Kikuchi <bclswl0827@yahoo.co.jp>"
 ENV APT_MIRROR="mirrors.bfsu.edu.cn" \
     DEBIAN_FRONTEND=noninteractive \
@@ -17,6 +18,7 @@ RUN if [ "x${APT_MIRROR}" != "x" ]; then \
     && apt-get update \
     && apt-get install --no-install-recommends -y ca-certificates curl file git iptables make rsync upx-ucl \
     && git clone --branch ${GIT_BRANCH} --depth 1 --single-branch https://${GIT_HOST}/${GIT_USER}/${REPO_NANE} /root/${REPO_NANE} \
+    && sed -e "s#/etc/hosts#/dev/null#g" -i /root/${REPO_NANE}/Makefile \
     && cd /root/${REPO_NANE}; make; make install \
     && upx --lzma /usr/local/bin/kiwid \
     && apt-get autoremove --purge -y clang-7 git make rsync upx-ucl \
