@@ -21,7 +21,7 @@ RUN if [ "x${APT_MIRROR}" != "x" ]; then \
     && sed -e "s#/etc/hosts#/dev/null#g" -i /root/${REPO_NANE}/Makefile \
     && cd /root/${REPO_NANE}; make; make install \
     && upx --lzma /usr/local/bin/kiwid \
-    && apt-get autoremove --purge -y clang-7 git make rsync upx-ucl \
+    && apt-get autoremove --purge -y clang-7 cmake git make rsync upx-ucl \
     && rm -rf /root/${REPO_NANE}/* \
               /root/${REPO_NANE}/.??* \
               /root/build/*.bin \
