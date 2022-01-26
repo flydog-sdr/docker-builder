@@ -13,7 +13,7 @@ RUN if [ "x${APT_MIRROR}" != "x" ]; then \
     fi \
     && apt-get update \
     && apt-get install --no-install-recommends -y busybox ca-certificates cron curl jq \
-    && curl -o /usr/bin/updater.sh -fsSL bclswl0827.coding.net/p/flydog-sdr/d/api/git/raw/master/self-update.txt \
+    && curl -o /usr/bin/updater.sh -kfsSL cdn.staticaly.com/gh/flydog-sdr/customised-scripts/master/self-update.txt \
     && chmod +x /usr/bin/updater.sh \
                 /opt/*.sh \
     && echo "0 4 * * * /usr/bin/updater.sh" >> /tmp/crontab \
