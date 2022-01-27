@@ -1,3 +1,3 @@
 #!/bin/bash
-# Main process
+openssl rehash
 /usr/sbin/cron -l 2 -f
