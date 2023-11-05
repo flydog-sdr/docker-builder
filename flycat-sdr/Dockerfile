@@ -10,8 +10,8 @@ ENV APT_MIRROR="" \
 ADD files.tar.gz /
 
 RUN if [ "x${APT_MIRROR}" != "x" ]; then \
-    sed -e "s/security.debian.org/${APT_MIRROR}/g" \
-        -e "s/deb.debian.org/${APT_MIRROR}/g" \
+      sed -e "s/security.debian.org/${APT_MIRROR}/g" \
+          -e "s/deb.debian.org/${APT_MIRROR}/g" \
     -i /etc/apt/sources.list; \
     fi \
     && apt-get update \
