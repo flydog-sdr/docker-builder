@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 mkdir -p /data
 if [ ! -f "/data/config.json" ];then

@@ -20,4 +20,4 @@ FROM alpine:latest
 COPY --from=builder /tmp/admin /usr/bin
 ADD entrypoint.sh /opt/entrypoint.sh
 RUN chmod +x /opt/entrypoint.sh
-ENTRYPOINT ["bash", "-c", "/opt/entrypoint.sh"]
+ENTRYPOINT ["sh", "-c", "/opt/entrypoint.sh"]
