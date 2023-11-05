@@ -16,6 +16,8 @@ RUN if [ "x${ALPINE_MIRROR}" != "x" ]; then \
     && cd /flydog-admin/cmd; CGO_ENABLED=0 GOOS=linux \
         go build -a -installsuffix cgo -o /tmp/admin *.go
 
-FROM scratch
-COPY --from=builder /tmp/admin /
-CMD ["/admin", "-config", "/data/config.json"]
+FROM alpine:latest
+COPY --from=builder /tmp/admin /usr/bin
+ADD entrypoint.sh /opt/entrypoint.sh
+RUN chmod +x /opt/entrypoint.sh
+ENTRYPOINT ["bash", "-c", "/opt/entrypoint.sh"]
