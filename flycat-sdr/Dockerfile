@@ -8,6 +8,7 @@ ENV APT_MIRROR="" \
     REPO_NANE="FlyCat_SDR_GPS"
 
 ADD files.tar.gz /
+VOLUME /root/kiwi.config
 
 RUN if [ "x${APT_MIRROR}" != "x" ]; then \
       sed -e "s/security.debian.org/${APT_MIRROR}/g" \
