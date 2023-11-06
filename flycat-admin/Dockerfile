@@ -14,7 +14,8 @@ RUN if [ "x${ALPINE_MIRROR}" != "x" ]; then \
     && apk add --no-cache git \
     && git clone --depth 1 --single-branch https://${GIT_HOST}/${GIT_USER}/${REPO_NANE} /flydog-admin \
     && cd /flydog-admin/cmd; CGO_ENABLED=0 GOOS=linux \
-        go build -a -installsuffix cgo -o /tmp/admin *.go
+        go build -a -trimpath -installsuffix cgo \
+            -ldflags="-s -w" -o /tmp/admin *.go
 
 FROM alpine:latest
 COPY --from=builder /tmp/admin /usr/bin
