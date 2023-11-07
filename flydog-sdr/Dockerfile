@@ -17,12 +17,10 @@ RUN if [ "x${APT_MIRROR}" != "x" ]; then \
           -i /etc/apt/sources.list; \
     fi \
     && apt-get update \
-    && apt-get install --no-install-recommends -y ca-certificates curl file git netpbm iptables make rsync upx-ucl \
+    && apt-get install --no-install-recommends -y ca-certificates curl file git netpbm iptables make rsync \
     && git clone --branch ${GIT_BRANCH} --depth 1 --single-branch https://${GIT_HOST}/${GIT_USER}/${REPO_NANE} /root/${REPO_NANE} \
-    && sed -e "s#/etc/hosts#/dev/null#g" -i /root/${REPO_NANE}/Makefile \
     && cd /root/${REPO_NANE}; make; make install \
-    && upx --lzma /usr/local/bin/kiwid \
-    && apt-get autoremove --purge -y clang-7 cmake git make rsync upx-ucl \
+    && apt-get autoremove --purge -y clang-7 cmake git make rsync \
     && rm -rf /root/${REPO_NANE}/* \
               /root/${REPO_NANE}/.??* \
               /root/build/*.bin \
