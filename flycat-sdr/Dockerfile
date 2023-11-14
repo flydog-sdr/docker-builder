@@ -16,7 +16,7 @@ RUN if [ "x${APT_MIRROR}" != "x" ]; then \
     -i /etc/apt/sources.list; \
     fi \
     && apt-get update \
-    && apt-get install --no-install-recommends -y ca-certificates curl file git netpbm iptables make rsync \
+    && apt-get install --no-install-recommends -y ca-certificates curl file git netpbm iptables make rsync iputils-ping \
     && git clone --branch ${GIT_BRANCH} --depth 1 --single-branch https://${GIT_HOST}/${GIT_USER}/${REPO_NANE} /root/${REPO_NANE} \
     && cd /root/${REPO_NANE}; make; make install \
     && rm -rf /root/build/*.bin /var/lib/apt/lists/*
