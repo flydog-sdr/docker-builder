@@ -1,6 +1,5 @@
 #FROM debian:buster-slim
 FROM registry.cn-shanghai.aliyuncs.com/flydog-sdr/debian:latest AS builder
-LABEL maintainer "Yuki Kikuchi <bclswl0827@yahoo.co.jp>"
 ENV APT_MIRROR="" \
     DEBIAN_FRONTEND=noninteractive
 
